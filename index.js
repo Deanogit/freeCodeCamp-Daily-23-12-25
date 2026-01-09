@@ -8,10 +8,19 @@
 // "re:"
 // Return the total number of occurrences of these markers.
 
+// function emailChainCount(subject) {
+//   let count = 0;
+//   const regex = /[fw:\s]|[fwd:\s]|[re:\s]/gi;
+//   console.log(subject.split(regex));
+//   console.log(subject);
+//   return subject;
+// }
+
 function emailChainCount(subject) {
-  let count = 0;
-  const regex = /[fw:\s]|[fwd:\s]|[re:\s]/gi;
-  console.log(subject.split(regex));
-  console.log(subject);
-  return subject;
+  const regex = /(re:|fw:|fwd:)/gi;
+
+  if (!subject.match(regex)) {
+    return '0';
+  }
+  return subject.match(regex).length;
 }
