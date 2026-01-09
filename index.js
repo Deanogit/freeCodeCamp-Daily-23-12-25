@@ -16,11 +16,21 @@
 //   return subject;
 // }
 
-function emailChainCount(subject) {
-  const regex = /(re:|fw:|fwd:)/gi;
+// function emailChainCount(subject) {
+//   const regex = /(re:|fw:|fwd:)/gi;
 
-  if (!subject.match(regex)) {
-    return '0';
-  }
-  return subject.match(regex).length;
+//   if (!subject.match(regex)) {
+//     return '0';
+//   }
+//   return subject.match(regex).length;
+// }
+
+function emailChainCount(subject) {
+  const regex = /(re:|fwd:|fw:)/gi;
+
+  // match returns an array or null
+  // if null, fall back to empty array
+  const matches = subject.match(regex) || [];
+
+  return matches.length;
 }
